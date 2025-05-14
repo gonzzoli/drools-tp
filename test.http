@@ -1,0 +1,25 @@
+### ✅ Caso 0: Ejecutar Test
+POST http://localhost:8080/api/reglas/caso-test
+Content-Type: application/json
+
+### ➕ Insertar nuevo Cliente y mostrar agenda
+POST http://localhost:8080/api/reglas/insertar
+Content-Type: application/json
+
+{
+  "nombre": "Agustina",
+  "puntos": 180
+}
+
+### ➕ Otro cliente con menos puntos
+POST http://localhost:8080/api/reglas/insertar
+Content-Type: application/json
+
+{
+  "nombre": "Tomás",
+  "puntos": 60
+}
+
+###
+POST  http://localhost:8080/api/reglas/testrest
+Content-Type: application/json

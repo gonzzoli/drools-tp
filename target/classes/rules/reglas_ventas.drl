@@ -1,0 +1,14 @@
+package rules;
+
+import com.ejemplo.reglas.model.Venta;
+
+rule "Descuento 10% por rubro y venta mayorista"
+when
+    $v : Venta(cantidad >= 100, 
+    producto.rubro == "Indumentaria" || producto.rubro == "Alimento")
+then
+    System.out.println("Descuento otorgado a " + $v.toString());
+    // Descuento del 10%
+    modify($v) {setImporte($v.getImporte() - $v.getImporte() * 0.1)};
+    System.out.println("Venta resultante: " + $v.toString());
+end

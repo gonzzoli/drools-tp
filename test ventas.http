@@ -1,0 +1,27 @@
+### ➕ Venta sin descuento por rubro y mayorista
+POST  http://localhost:8080/api/reglas/ventas/insertar
+Content-Type: application/json
+
+{
+  "importe": 500,
+  "cantidad": 110,
+  "producto": {
+    "nombre": "Cemento",
+    "rubro": "Construccion",
+    "proveedor": "proveedor 1"
+  }
+}
+
+### Venta con descuento por rubro y mayorista
+POST  http://localhost:8080/api/reglas/ventas/insertar
+Content-Type: application/json
+
+{
+  "importe": 500,
+  "cantidad": 110,
+  "producto": {
+    "nombre": "Pantalon",
+    "rubro": "Indumentaria",
+    "proveedor": "proveedor 1"
+  }
+}

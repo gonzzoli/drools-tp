@@ -1,0 +1,21 @@
+package rules;
+
+import com.ejemplo.reglas.model.Cliente
+
+// 🧠 Reaccionar ante cualquier Cliente insertado
+rule "Detectar cualquier cliente"
+when
+    $c : Cliente()
+then
+    System.out.println("🧾 Cliente detectado: " + $c.getNombre() + " (" + $c.getPuntos() + " puntos)");
+end
+
+// 🟢 Detectar cliente con más de 100 puntos
+rule "Cliente VIP (más de 100 puntos)"
+when
+    $c : Cliente(puntos > 100)
+then
+    System.out.println("💎 Cliente VIP: " + $c.getNombre());
+end
+
+////// REGLAS MIAS

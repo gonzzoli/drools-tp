@@ -1,0 +1,7 @@
+com\ejemplo\reglas\dto\ResultadoEjecucionDTO.class
+com\ejemplo\reglas\model\Cliente.class
+com\ejemplo\reglas\DroolsDemoApplication.class
+com\ejemplo\reglas\service\MotorDeReglasService$1.class
+com\ejemplo\reglas\controller\DroolsController.class
+com\ejemplo\reglas\service\MotorDeReglasService.class
+com\ejemplo\reglas\service\ReglaTracker.class
