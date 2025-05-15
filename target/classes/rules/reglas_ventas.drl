@@ -2,13 +2,58 @@ package rules;
 
 import com.ejemplo.reglas.model.Venta;
 
+
 rule "Descuento 10% por rubro y venta mayorista"
+salience 10
+agenda-group "aplicacion-descuentos"
 when
-    $v : Venta(cantidad >= 100, 
+    $v : Venta(descuentoAplicado == 0, cantidad >= 100, 
     producto.rubro == "Indumentaria" || producto.rubro == "Alimento")
 then
     System.out.println("Descuento otorgado a " + $v.toString());
-    // Descuento del 10%
-    modify($v) {setImporte($v.getImporte() - $v.getImporte() * 0.1)};
-    System.out.println("Venta resultante: " + $v.toString());
+    modify($v) {aplicarDescuento(0.1)};
+end
+
+//---
+
+rule "Descuento 15% por venta en zona 1"
+salience 15
+agenda-group "aplicacion-descuentos"
+when
+    $v : Venta(descuentoAplicado == 0, cliente.zona == "Zona 1")
+then
+    System.out.println("Descuento otorgado a " + $v.toString());
+    modify($v) {aplicarDescuento(0.15)};
+end
+
+//---
+
+rule "Descuento 25% fines de semana"
+salience 25
+agenda-group "aplicacion-descuentos"
+when
+    $v : Venta(descuentoAplicado == 0, diaSemana == 5 || diaSemana == 6)
+then
+    System.out.println("Descuento otorgado a " + $v.toString());
+    modify($v) {aplicarDescuento(0.15)};
+end
+
+//---
+
+rule "Envio gratis si importe mayor o igual a 500"
+agenda-group "beneficios-por-importe-final"
+when
+    $v : Venta(importe >= 500)
+then
+    System.out.println("Envio gratis para " + $v.toString());
+    modify($v) {setCostoEnvio(0)};
+end
+
+rule "Participa de premio si importe mayor a 1000"
+agenda-group "beneficios-por-importe-final"
+when
+    $v : Venta(importe > 1000)
+then
+    System.out.println("Venta participa de premio " + $v.toString());
+    modify($v) {setParticipaPorPremio(true)};
 end

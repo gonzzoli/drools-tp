@@ -17,11 +17,20 @@ POST  http://localhost:8080/api/reglas/ventas/insertar
 Content-Type: application/json
 
 {
-  "importe": 500,
+  "importe": 1100,
   "cantidad": 110,
+  "descuentoAplicado": 0.0,
+  "diaSemana": 6,
+  "costoEnvio": 30,
+  "participaPorPremio": false,
   "producto": {
     "nombre": "Pantalon",
     "rubro": "Indumentaria",
     "proveedor": "proveedor 1"
+  },
+  "cliente": {
+    "nombre": "Ruben",
+    "puntos": 100,
+    "zona": "Zona 1"
   }
 }
